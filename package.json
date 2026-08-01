@@ -1,27 +1,70 @@
 {
-  "name": "studybloom",
-  "private": true,
-  "version": "1.0.0",
+  "name": "@vitejs/plugin-react",
+  "version": "4.7.0",
+  "license": "MIT",
+  "author": "Evan You",
+  "description": "The default Vite plugin for React projects",
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "react",
+    "babel",
+    "react-refresh",
+    "fast refresh"
+  ],
+  "contributors": [
+    "Alec Larson",
+    "Arnaud Barré"
+  ],
+  "files": [
+    "dist"
+  ],
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "prepublishOnly": "npm run build",
+    "test-unit": "vitest run"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitejs/vite-plugin-react.git",
+    "directory": "packages/plugin-react"
+  },
+  "bugs": {
+    "url": "https://github.com/vitejs/vite-plugin-react/issues"
+  },
+  "homepage": "https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#readme",
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "framer-motion": "^11.11.17",
-    "lucide-react": "^0.462.0"
+    "@babel/core": "^7.28.0",
+    "@babel/plugin-transform-react-jsx-self": "^7.27.1",
+    "@babel/plugin-transform-react-jsx-source": "^7.27.1",
+    "@rolldown/pluginutils": "1.0.0-beta.27",
+    "@types/babel__core": "^7.20.5",
+    "react-refresh": "^0.17.0"
+  },
+  "peerDependencies": {
+    "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.3",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.11"
+    "@vitejs/react-common": "workspace:*",
+    "babel-plugin-react-compiler": "19.1.0-rc.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rolldown": "1.0.0-beta.27",
+    "tsdown": "^0.12.9",
+    "vitest": "^3.2.4"
   }
 }
